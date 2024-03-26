@@ -1,0 +1,31 @@
+#Generador de discurso rimbombante y vacío | python3
+#Creado por: cadecastro.com, de una conferencia dictada por Armando De Castro Jaramillo.
+
+print('*** Generador de discurso rimbombante y vacío: ***')
+print('')
+n = int( input( '    Cantidad de líneas de discurso (hasta 100):' ) )
+print('')
+#Generación:
+import random
+n = min( n, 100 )
+I = [ 'Por otra parte', 'Así mismo', 'Sin embargo no olvidemos que', 'De igual manera', 'La práctica de la vida cotidiana prueba que', 'No es indispensable argumentar el peso y la significación de estos problemas ya que',
+     'Las experiencias ricas y diversas', 'El afán de organización pero sobretodo', 'Los principios superiores ideológicos así como']
+II = [ 'la realización de los deberes del programa', 'la complejidad de los estudios de los dirigentes', 'el aumento constante, en cantidad y en extensión de nuestra actividad', 'la estructura actual de la organización',
+      'el nuevo modelo de la actividad de la organización', 'al desarrollo continuo de distintas formas de actividad', 'la garantía constante, nuestra actividad de información y de propaganda',
+       'el reforzamiento y desarrollo de las estructuras', 'la consulta con los numerosos militantes', 'el inicio de la acción general de la formación de las actitudes']
+III = [ 'nos obliga al análisis', 'cumple un rol esencial en la formación', 'exige la precisión y la determinación', 'ayuda a la preparación y la realización', 'garantiza la participación de un grupo importante en la formación',
+       'cumple deberes importantes en la determinación', 'facilita la creación', 'obstaculiza la apreciación de la importancia', 'ofrece un ensayo interesante de verificación', 'implica el proceso de reestructuración y de modernización']
+IV = [ 'de las condiciones financieras y administrativas existentes', 'de las directivas de desarrollo para el futuro', 'del sistema de participación general', 'de las actitudes de los miembros de las organizaciones hacia sus deberes',
+      'de las nuevas proposiciones', 'de las direcciones educativas en el sentido del progreso', 'del sistema de formación de los cuadros que corresponda a las necesidades', 'de las condiciones de las actividades apropiadas',
+       'del modelo de desarrollo', 'de las formas de acción']
+print('-'*50)
+print('DISCURSO:')
+print('')
+print( 'Queridos colegas:' )
+print('')
+print( II[ random.randint( 0,9 ) ].capitalize() + ' ' + III[ random.randint( 0,9 ) ] + ' ' + IV[ random.randint( 0,9 ) ]+'.' )
+for k in range(n-1):
+  print( I[ random.randint( 0,8 ) ] + ' ' + II[ random.randint( 0,9 ) ] + ' ' + III[ random.randint( 0,9 ) ] + ' ' + IV[ random.randint( 0,9 ) ]+'.' )
+print('')
+print( 'Gracias por su atención.' )
+print('-'*50)
