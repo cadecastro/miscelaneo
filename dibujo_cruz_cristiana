@@ -1,0 +1,73 @@
+# Librería y definición de función:
+
+import matplotlib.pyplot as plt
+print('Librería necesaria importada.')
+
+def cruz_cristiana( a:float , b:float , L:float , w:float , **kwargs ):
+
+  """
+  a: longitud del centro del madero horizontal al borde inferior
+  b: longitud del centro del madero horizontal al borde superior
+  L: longitud del madero horizontal
+  w: ancho de las tablas de la cruz
+
+  Opcionales: color_fondo, color_texto, color_linea, color_cruz - default madera
+              texto, texto_on:bool - default True, razon_aurea:bool - default False
+  """
+
+  #Revisión argumentos opcionales:
+  if 'color_fondo' not in kwargs.keys():
+    color_fondo = 'white' # '#6f198e'
+  else:
+    color_fondo = kwargs['color_fondo']
+  if 'color_texto' not in kwargs.keys():
+    color_texto = 'gray'
+  else:
+    color_texto = kwargs['color_texto']
+  if 'color_linea' not in kwargs.keys():
+    color_linea = '#7b3f00' # '#cccc9c'
+  else:
+    color_linea = kwargs['color_linea']
+  if 'color_cruz' not in kwargs.keys():
+    color_cruz = '#7b3f00' # 'gold'
+  else:
+    color_cruz = kwargs['color_cruz']
+  if 'texto' not in kwargs.keys():
+    texto = 'IESVS NAZARENVS REX IVDAEORVM'
+  else:
+    texto = kwargs['texto']
+  if 'texto_on' not in kwargs.keys():
+    texto_on = True
+  else:
+    texto_on = kwargs['texto_on']
+
+  #Verificar si actvada la razón áurea:
+  if 'razon_aurea' not in kwargs.keys():
+    razon_aurea = False
+  else:
+    razon_aurea = kwargs['razon_aurea']
+
+  if razon_aurea:
+    phi = ( 1 + 5**0.5 )/2
+    b = a/phi
+    L = a
+    w = a/4
+
+  #Coordenadas:
+  x = [ -L/2 , -L/2 , -w/2 , -w/2 , w/2 , w/2, L/2 , L/2 ]
+  y_sup = [  0, w/2 , w/2 , b , b , w/2 , w/2 , 0 ]
+  y_inf = [  0, -w/2 , -w/2 , -a , -a , -w/2 , -w/2 , 0 ]
+
+  #Gráfica:
+  plt.figure( 1 , figsize=( 7,7 ) , facecolor=color_fondo )
+  ax = plt.subplot( facecolor=color_fondo )
+  plt.plot( x , y_sup  , color=color_linea )
+  plt.plot( x , y_inf , color=color_linea )
+  plt.fill_between( x , y_sup , y_inf , color=color_cruz )
+  plt.axis( 'equal' )
+  plt.axis('off')
+  if texto_on:
+    plt.text( 0 , 0, texto , ha='center', va='center', color=color_texto , style='italic' , size=10, fontname='Serif' )
+
+  return None
+print('Función de dibujo de la cruz definida.')
